@@ -1,0 +1,179 @@
+{% extends 'menupages/navbar.html' %}
+
+{% load static %}
+
+{%  block content %}
+<nav class="navbar navbar-light" style="font-weight:800; background-color: rgb(255, 0, 0); place-content: center; background-clip: content-box;">
+  <span class="navbar-text">
+      WE DO CATERING, DELIVERIES, AND PICKUPS CALL US <span class="border border-dark" style="background-color: black;"></span><span class="iconify" data-icon="ant-design:phone-filled" data-inline="false"></span>908-432-6909
+  </span>
+</nav>
+<br>
+<body id="bg" style="background-image: url('{% static 'menu\images\LR.jpg' %}');background-attachment: fixed; background-position-x: center;
+">
+<div class="container" style="background-color: rgb(38, 38, 38); color:white; max-width: max-content;">
+Open From 12pm-3pm and 6pm-9pm
+</div>
+<div class="container">
+
+<!--################################################################################################-->
+<!--################################## BURGERS OF THE WEEK #########################################-->
+<!--################################################################################################-->
+
+<div class="card text-center" style="background-color: rgb(77 77 77/ 95%)">
+
+  <h1 class="card-header" style="background-color: #00000080; color: black">BURGERS OF THE WEEK</h1>
+    {% for b in burger %}
+
+  <div class="card-body">
+
+    <hr style="background-color: rgb(255, 0, 0)">
+    <div class="row" style="justify-content: center;">
+      {% csrf_token %}
+      {% if b.image %}
+    <img src='{{b.image}}' alt=" " border="groove" border-style="groove" class="card-img-top"
+             style="width: 10rem;">
+<!--    <hr style="background-color: rgb(255, 153, 0)">-->
+      {% endif %}
+      <div class="col" style="max-width: 50%;">
+          <br>
+        <h5 class="card-title" style="color: black">{{b.name}}...${{b.price}}</h5>
+          <h5 class="card-text" style="color: black">{{b.description}}</h5>
+      </div>
+    </div>
+
+<!--      <a href="#" class="btn btn-primary">Comment link</a>-->
+  </div>
+
+    {% endfor %}
+
+</div>
+
+  <!--################################################################################################-->
+<!--################################## ENTREES #####################################################-->
+<!--################################################################################################-->
+
+<div class="card text-center" style="background-color: rgb(77 77 77/ 95%)">
+
+  <h5 class="card-header" style="background-color: rgb(38, 38, 38); color: black">Entress-Served w/ (PASTA OR SALAD) and Bread</h5>
+    {% for e in entress %}
+  <div class="card-body">
+
+    <hr style="background-color: rgb(255, 0, 0)">
+    <div class="row" style="justify-content: center;">
+      {% csrf_token %}
+      {% if e.image %}
+    <img alt=" " border="groove" border-style="groove" class="card-img-top" src="{{e.image}}"
+             style="width: 10rem;">
+      {% endif %}
+<!--    <hr>-->
+
+      <div class="col" style="max-width: 50%;">
+
+        <h6 class="card-title" style="color: black">{{e.name}}...${{e.price}}</h6>
+        <h6 class="card-text" style="color: black">{{e.description}}</h6>
+      </div>
+    </div>
+<!--<br>-->
+<!--      <a href="#" class="btn btn-primary">Comment link</a>-->
+
+  </div>
+
+    {% endfor %}
+
+</div>
+
+<!--################################################################################################-->
+<!--################################## HOT SANDWICHES ##############################################-->
+<!--################################################################################################-->
+
+<div class="card text-center" style="background-color: rgb(77 77 77/ 95%)">
+
+  <h5 class="card-header" style="background-color: rgb(38, 38, 38); color: black">Hot Sandwiches-Bread choices (Italian Heros, Panini)</h5>
+    {% for h in hot %}
+  <div class="card-body">
+
+
+    <hr style="background-color: rgb(255, 0, 0);">
+    <div class="row" style="justify-content: center;">
+      {% csrf_token %}
+      {% if h.image %}
+      <img alt=" " border="groove" border-style="groove" class="card-img-top" src="{{h.image}}"
+             style="width: 10rem;">
+      {% endif %}
+      <div class="col" style="max-width: 50%">
+
+        <br>
+        <h6 class="card-title" style="color: black">{{h.name}}...${{h.price}}</h6>
+          <h6 class="card-text" style="color: black">{{h.description}}</h6>
+      </div>
+    </div>
+
+<!--    <hr style="background-color: rgb(255, 153, 0)">-->
+
+
+<!--      <a href="#" class="btn btn-primary">Comment link</a>-->
+  </div>
+    {% endfor %}
+
+</div>
+
+<!--################################################################################################-->
+<!--################################## COLD SANDWICHES #############################################-->
+<!--################################################################################################-->
+
+<div class="card text-center" style="background-color: rgb(77 77 77/ 95%)">
+
+  <h5 class="card-header" style="background-color: rgb(38, 38, 38); color: black">Cold Sandwiches-Bread choices (Panini, Rye Bread, Rolls)</h5>
+    {% for c in cold %}
+  <div class="card-body ">
+
+    <hr style="background-color: rgb(255, 0, 0)">
+    <div class="row" style="justify-content: center;">
+      {% csrf_token %}
+      {% if c.image %}
+        <img alt=" " border="groove" border-style="groove" class="card-img-top" src="{{c.image}}"
+             style="width: 10rem;">
+      {% endif %}
+      <div class="col" style="max-width: 50%;">
+              <br>
+        <h6 class="card-title" style="color: black">{{c.name}}...${{c.price}}</h6>
+          <h6 class="card-text" style="color: black" >{{c.description}}</h6>
+      </div>
+    </div>
+<!--      <a href="#" class="btn btn-primary">Comment link</a>-->
+
+  </div>
+
+    {% endfor %}
+
+</div>
+
+
+<!--################################################################################################-->
+<!--################################## DESSERT #####################################################-->
+<!--################################################################################################-->
+
+<div class="card text-center" style="background-color: rgb(77 77 77/ 95%)">
+
+  <h1 class="card-header" style="background-color: rgb(38, 38, 38); color: black">DESSERT OF THE WEEK</h1>
+    {% for d in dessert %}
+  <div class="card-body">
+
+    <hr style="background-color: rgb(255, 0, 0);">
+    <h4 class="card-title" style="color: black">{{d.name}}...${{d.price}}</h4>
+<!--    <hr style="background-color: rgb(255, 153, 0)">-->
+
+      <div class="row" style="justify-content: center;">
+          <h5 class="card-text" style="color: black">{{d.description}}</h5>
+      </div>
+
+<!--      <a href="#" class="btn btn-primary">Comment link</a>-->
+  </div>
+    {% endfor %}
+
+</div></div>
+<br>
+</body>
+
+{% endblock %}

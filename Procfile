@@ -1,0 +1,1 @@
+web: gunicorn madalenaskitchen.wsgi -- log-file -

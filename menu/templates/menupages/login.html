@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+
+<style>
+.center {
+
+  margin: auto;
+  width: 60%;
+  border: 3px solid #686868;
+  padding: 75px;
+  text-align: center;
+
+  height: 500px;
+  width: 40%;
+  opacity: 1;
+  background-color: #ff915095
+
+}
+
+
+
+</style>
+
+<html>
+<body style="height:15px;border-width:0;color:gray;background-color:#adb5bd">
+<div class="center">
+
+    <div aria-hidden="true" class="modal show" id="loginModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                    <form class="form col-md-12 center-block" method="POST">{% csrf_token %}
+                        <h4>{{messege}}</h4>
+                        <div action="" class="form" method="POST">{% csrf_token %}
+
+                            <input class="form-control input-lg" name="username" placeholder="username" type="text">
+                            <br>
+                            <hr>
+
+                            <input class="form-control input-lg" name="password" placeholder="Enter Password"
+                                   type="Password">
+                        </div>
+                        <br>
+                        <div class="form-group" method="post">
+                            <button action="POST" action="" class="btn btn-primary btn-lg btn-block"> Sign In</button>
+                            <!--                                            <button class="btn" data-dismiss="modal" aria-hidden="true" method="POST" ">Cancel</button>-->
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <div class="col-md-12">
+                            <span class="pull-right"><a href="/reset_password/">Forgot Password</a></span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

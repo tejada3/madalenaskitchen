@@ -1,0 +1,196 @@
+{% extends 'menupages/navbar.html' %}
+
+{% load static %}
+
+{%  block content %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Control</title>
+</head>
+<body style="background-color: grey;">
+<nav >
+  <div class="nav nav-tabs" id="nav-tab" role="tablist" >
+    <a class="nav-item nav-link active" id="nav-hot-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="color: white;">Hot Sandwiches</a>
+    <a class="nav-item nav-link" id="nav-cold-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" style="color: white;">Cold Sandwiches</a>
+    <a class="nav-item nav-link" id="nav-Entrees-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="true" style="color: white;">Entrees</a>
+      <a class="nav-item nav-link" id="nav-FOTW-tab" data-toggle="tab" href="#nav-FOTW" role="tab" aria-controls="nav-contact" aria-selected="false" style="color: white;">FOTW</a>
+  </div>
+</nav>
+<!--&#45;------------------------------------------------------------------------------------------&#45;-->
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+      <table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Hot Sandwiches</th>
+      <th scope="col">Price</th>
+      <th scope="col">On Menu</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+    {% for h in hot %}
+  <tbody>
+  <tr>
+      <th scope="row">{{h.name}}</th>
+      <td>{{h.price}}</td>
+      <td>{{h.available}}</td>
+      <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="/update/{{h.id}}" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="true">Edit</a>
+                <a href="/changeav/{{h.id}}" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="true">Remove from Menu</a>
+                <a href="/delete/{{h.id}}" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+            </div>
+      </td>
+    </tr>
+  </tbody>
+    {% endfor %}
+</table>
+<hr>
+      <a href="/add/" class="btn btn-success btn-sm btn-block" role="button" aria-pressed="true">ADD HOT SANDWICH ITEM</a>
+      <a href="/addd/" class="btn btn-success btn-sm btn-block" role="button" aria-pressed="true">ADD FOTW ITEM</a>
+  </div>
+
+
+<!----------------------------------------------------------------------------------------------->
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+
+      <table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Cold Sandwiches</th>
+      <th scope="col">Price</th>
+      <th scope="col">On Menu</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+          {% for c in cold %}
+  <tbody>
+      <th scope="row">{{c.name}}</th>
+      <td>{{c.price}}</td>
+      <td>{{c.available}}</td>
+      <td>
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="/update/{{c.id}}" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="true">Edit</a>
+                <a href="/changeav/{{c.id}}" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="true">Remove from Menu</a>
+                <a href="/delete/{{c.id}}" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+            </div>
+
+      </td>
+    {% endfor %}
+  </tbody>
+
+</table>
+      <hr>
+<a href="/add/" class="btn btn-success btn-sm btn-block" role="button" aria-pressed="true">ADD COLD SANDWICH ITEM</a>
+      <a href="/addd/" class="btn btn-success btn-sm btn-block" role="button" aria-pressed="true">ADD FOTW ITEM</a>
+  </div>
+
+
+<!------------------------------------------------------------------------------------------->
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+  <table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Entrees</th>
+      <th scope="col">Price</th>
+      <th scope="col">On Menu</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+      {% for e in entress %}
+  <tbody>
+      <th scope="row">{{e.name}}</th>
+      <td>{{e.price}}</td>
+      <td>{{e.available}}</td>
+      <td>
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="/update/{{e.id}}" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="true">Edit</a>
+                <a href="/changeav/{{e.id}}" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="true">Remove from Menu</a>
+                <a href="/delete/{{e.id}}" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+            </div>
+
+
+      </td>
+        {% endfor %}
+  </tbody>
+</table>
+      <hr>
+<a href="/add/" class="btn btn-success btn-sm btn-block" role="button" aria-pressed="true">ADD ENRTEE ITEM</a>
+      <a href="/addd/" class="btn btn-success btn-sm btn-block" role="button" aria-pressed="true">ADD FOTW ITEM</a>
+</div>
+
+
+
+<!------------------------------------------------------------------------------------------->
+    <div class="tab-pane fade" id="nav-FOTW" role="tabpanel" aria-labelledby="nav-FOTW-tab">
+
+  <table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Foods of The Week</th>
+      <th scope="col">Type</th>
+      <th scope="col">Price</th>
+      <th scope="col">On Menu</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+      {% for b in burger %}
+  <tbody>
+      <th scope="row">{{b.name}}</th>
+      <td>{{b.type}}</td>
+      <td>{{b.price}}</td>
+      <td>{{b.available}}</td>
+      <td>
+
+          <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="/update/{{b.id}}" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="true">Edit</a>
+                <a href="/av/{{b.id}}" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="true">Remove from Menu</a>
+                <a href="/deleteFOTW/{{b.id}}" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+            </div>
+
+      </td>
+
+{% endfor %}
+  </tbody>
+
+      {% for d in dessert %}
+  <tbody>
+      <th scope="row">{{d.name}}</th>
+      <td>{{d.type}}</td>
+      <td>{{d.price}}</td>
+      <td>{{d.available}}</td>
+      <td>
+    {% csrf_token %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="/update/{{d.id}}" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="true">Edit</a>
+                <a href="/av/{{d.id}}" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="true">Remove from Menu</a>
+                <a href="/deleteFOTW/{{d.id}}" class="btn btn-outline-danger btn-sm active" role="button" aria-pressed="true">Delete</a>
+            </div>
+
+      </td>
+
+
+  </tbody>
+      {% endfor %}
+</table>
+        <hr>
+        <a href="/addd/" class="btn btn-success btn-sm btn-block" role="button" aria-pressed="true">ADD FOTW ITEM</a>
+    </div>
+
+
+
+</div>
+
+</body>
+
+
+<hr>
+{% endblock %}
